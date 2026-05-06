@@ -6,6 +6,7 @@ import {
   products,
   categories,
   banners,
+  galleryImages,
   getTrendingProducts,
   getNewArrivals,
   getFestivalProducts,
@@ -141,16 +142,15 @@ function FestivalBanner() {
 }
 
 function Gallery() {
-  const seeds = ["gal1", "gal2", "gal3", "gal4", "gal5", "gal6"];
   return (
     <section className="px-3 sm:px-0">
       <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-1">Fashion Gallery</h2>
       <p className="text-sm text-gray-500 mb-3">Follow us on Instagram @kolkatafashionparsa</p>
       <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
-        {seeds.map((seed) => (
-          <div key={seed} className="aspect-square rounded-lg overflow-hidden bg-gray-100">
+        {galleryImages.map((url, i) => (
+          <div key={i} className="aspect-square rounded-lg overflow-hidden bg-gray-100">
             <img
-              src={`https://picsum.photos/seed/${seed}/200/200`}
+              src={url.replace("w=400&h=500", "w=200&h=200")}
               alt="Fashion"
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               loading="lazy"

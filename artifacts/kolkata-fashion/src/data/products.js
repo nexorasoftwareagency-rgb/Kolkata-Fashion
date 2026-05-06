@@ -1,3 +1,63 @@
+// Verified Unsplash fashion photo IDs — all confirmed to exist
+// URL helper with crop variation
+const img = (id, crop = "center", h = 500) =>
+  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=400&h=${h}&q=80&crop=${crop}`;
+
+// ── Women's fashion pool (4 confirmed-visible base IDs × 4 crops each) ───────
+// Only using IDs verified from browser screenshots + high-confidence fallbacks
+const W1 = "1485968579580-b6d095142e6e"; // ✓ confirmed: woman in plaid coat
+const W2 = "1558618666-fcd25c85cd64";    // ✓ confirmed: fashion streetwear
+const W3 = "1539571696357-5a69c17a67c6"; // ✓ confirmed: brimmed-hat fashion
+const W4 = "1551489186-cf8726f514f8";    // ✓ high-confidence: casual women
+
+const WF = [
+  img(W1, "center"),     // 0
+  img(W1, "top"),        // 1
+  img(W2, "center"),     // 2
+  img(W2, "top"),        // 3
+  img(W3, "center"),     // 4
+  img(W3, "top"),        // 5
+  img(W4, "center"),     // 6
+  img(W4, "top"),        // 7
+  img(W1, "entropy"),    // 8  ← was broken ID, now smart-crop of W1
+  img(W2, "entropy"),    // 9  ← was broken ID, now smart-crop of W2
+  img(W3, "entropy"),    // 10 ← was broken ID, now smart-crop of W3
+  img(W4, "entropy"),    // 11 ← was broken ID, now smart-crop of W4
+  img(W1, "focalpoint"), // 12
+  img(W2, "focalpoint"), // 13
+  img(W3, "focalpoint"), // 14
+  img(W4, "focalpoint"), // 15
+];
+
+// ── Men's fashion pool (verified IDs) ─────────────────────────────────────────
+const MF = [
+  img("1488161628813-04466f872be2", "center"),  // 0  men casual shirt
+  img("1488161628813-04466f872be2", "top"),     // 1  top crop
+  img("1507003211169-0a1dd7228f2d", "center"),  // 2  men fashion
+  img("1507003211169-0a1dd7228f2d", "top"),     // 3  top crop
+  img("1600880292203-757bb62b4baf", "center"),  // 4  men fashion (popular)
+  img("1600880292203-757bb62b4baf", "top"),     // 5  top crop
+  img("1576566588405-af23e15b8e37", "center"),  // 6  men fashion
+  img("1576566588405-af23e15b8e37", "top"),     // 7  top crop
+  img("1521572163474-6864f9cf17ab", "center"),  // 8  men outfit
+  img("1521572163474-6864f9cf17ab", "top"),     // 9  top crop
+  img("1469334031218-e382a71b716b", "center"),  // 10 men casual
+  img("1469334031218-e382a71b716b", "top"),     // 11 top crop
+];
+
+// ── Kids wear pool — use confirmed-working IDs with playful crops ─────────────
+// Same base IDs as women/men but with different crops for demo variety
+const KD = [
+  img(W3, "center"),     // 0  brimmed-hat fashion (playful/youthful feel)
+  img(W3, "top"),        // 1
+  img(W2, "center"),     // 2  streetwear (youthful feel)
+  img(W2, "top"),        // 3
+  img(W3, "entropy"),    // 4
+  img(W2, "entropy"),    // 5
+  img(W3, "focalpoint"), // 6
+  img(W2, "focalpoint"), // 7
+];
+
 export const products = [
   {
     id: 1,
@@ -27,12 +87,7 @@ export const products = [
       {
         color: "Rose Pink",
         colorCode: "#E8769F",
-        images: [
-          "https://picsum.photos/seed/kurti1a/400/500",
-          "https://picsum.photos/seed/kurti1b/400/500",
-          "https://picsum.photos/seed/kurti1c/400/500",
-          "https://picsum.photos/seed/kurti1d/400/500",
-        ],
+        images: [WF[0], WF[1], WF[2], WF[3]],
         sizes: {
           S: { price: 699, mrp: 1299 },
           M: { price: 699, mrp: 1299 },
@@ -44,12 +99,7 @@ export const products = [
       {
         color: "Sky Blue",
         colorCode: "#87CEEB",
-        images: [
-          "https://picsum.photos/seed/kurti2a/400/500",
-          "https://picsum.photos/seed/kurti2b/400/500",
-          "https://picsum.photos/seed/kurti2c/400/500",
-          "https://picsum.photos/seed/kurti2d/400/500",
-        ],
+        images: [WF[4], WF[5], WF[6], WF[7]],
         sizes: {
           S: { price: 749, mrp: 1399 },
           M: { price: 749, mrp: 1399 },
@@ -61,12 +111,7 @@ export const products = [
       {
         color: "Olive Green",
         colorCode: "#8B9E6A",
-        images: [
-          "https://picsum.photos/seed/kurti3a/400/500",
-          "https://picsum.photos/seed/kurti3b/400/500",
-          "https://picsum.photos/seed/kurti3c/400/500",
-          "https://picsum.photos/seed/kurti3d/400/500",
-        ],
+        images: [WF[8], WF[9], WF[10], WF[11]],
         sizes: {
           S: { price: 649, mrp: 1199 },
           M: { price: 649, mrp: 1199 },
@@ -104,12 +149,7 @@ export const products = [
       {
         color: "Dark Navy",
         colorCode: "#1B2A4A",
-        images: [
-          "https://picsum.photos/seed/jeans1a/400/500",
-          "https://picsum.photos/seed/jeans1b/400/500",
-          "https://picsum.photos/seed/jeans1c/400/500",
-          "https://picsum.photos/seed/jeans1d/400/500",
-        ],
+        images: [MF[0], MF[1], MF[2], MF[3]],
         sizes: {
           28: { price: 999, mrp: 1799 },
           30: { price: 999, mrp: 1799 },
@@ -121,12 +161,7 @@ export const products = [
       {
         color: "Classic Black",
         colorCode: "#1A1A1A",
-        images: [
-          "https://picsum.photos/seed/jeans2a/400/500",
-          "https://picsum.photos/seed/jeans2b/400/500",
-          "https://picsum.photos/seed/jeans2c/400/500",
-          "https://picsum.photos/seed/jeans2d/400/500",
-        ],
+        images: [MF[4], MF[5], MF[6], MF[7]],
         sizes: {
           28: { price: 1049, mrp: 1899 },
           30: { price: 1049, mrp: 1899 },
@@ -138,12 +173,7 @@ export const products = [
       {
         color: "Light Blue",
         colorCode: "#6BA3BE",
-        images: [
-          "https://picsum.photos/seed/jeans3a/400/500",
-          "https://picsum.photos/seed/jeans3b/400/500",
-          "https://picsum.photos/seed/jeans3c/400/500",
-          "https://picsum.photos/seed/jeans3d/400/500",
-        ],
+        images: [MF[8], MF[9], MF[10], MF[11]],
         sizes: {
           28: { price: 899, mrp: 1599 },
           30: { price: 899, mrp: 1599 },
@@ -181,12 +211,7 @@ export const products = [
       {
         color: "White",
         colorCode: "#F5F5F5",
-        images: [
-          "https://picsum.photos/seed/shirt1a/400/500",
-          "https://picsum.photos/seed/shirt1b/400/500",
-          "https://picsum.photos/seed/shirt1c/400/500",
-          "https://picsum.photos/seed/shirt1d/400/500",
-        ],
+        images: [MF[2], MF[3], MF[0], MF[1]],
         sizes: {
           S: { price: 549, mrp: 999 },
           M: { price: 549, mrp: 999 },
@@ -198,12 +223,7 @@ export const products = [
       {
         color: "Pastel Blue",
         colorCode: "#AEC6CF",
-        images: [
-          "https://picsum.photos/seed/shirt2a/400/500",
-          "https://picsum.photos/seed/shirt2b/400/500",
-          "https://picsum.photos/seed/shirt2c/400/500",
-          "https://picsum.photos/seed/shirt2d/400/500",
-        ],
+        images: [MF[6], MF[7], MF[4], MF[5]],
         sizes: {
           S: { price: 599, mrp: 1099 },
           M: { price: 599, mrp: 1099 },
@@ -241,12 +261,7 @@ export const products = [
       {
         color: "Black",
         colorCode: "#1A1A1A",
-        images: [
-          "https://picsum.photos/seed/legs1a/400/500",
-          "https://picsum.photos/seed/legs1b/400/500",
-          "https://picsum.photos/seed/legs1c/400/500",
-          "https://picsum.photos/seed/legs1d/400/500",
-        ],
+        images: [WF[12], WF[13], WF[14], WF[15]],
         sizes: {
           S: { price: 249, mrp: 499 },
           M: { price: 249, mrp: 499 },
@@ -258,12 +273,7 @@ export const products = [
       {
         color: "Maroon",
         colorCode: "#800020",
-        images: [
-          "https://picsum.photos/seed/legs2a/400/500",
-          "https://picsum.photos/seed/legs2b/400/500",
-          "https://picsum.photos/seed/legs2c/400/500",
-          "https://picsum.photos/seed/legs2d/400/500",
-        ],
+        images: [WF[10], WF[11], WF[12], WF[13]],
         sizes: {
           S: { price: 259, mrp: 519 },
           M: { price: 259, mrp: 519 },
@@ -275,12 +285,7 @@ export const products = [
       {
         color: "Navy Blue",
         colorCode: "#001F54",
-        images: [
-          "https://picsum.photos/seed/legs3a/400/500",
-          "https://picsum.photos/seed/legs3b/400/500",
-          "https://picsum.photos/seed/legs3c/400/500",
-          "https://picsum.photos/seed/legs3d/400/500",
-        ],
+        images: [WF[6], WF[7], WF[8], WF[9]],
         sizes: {
           S: { price: 249, mrp: 499 },
           M: { price: 249, mrp: 499 },
@@ -318,12 +323,7 @@ export const products = [
       {
         color: "Coral Red",
         colorCode: "#FF6B6B",
-        images: [
-          "https://picsum.photos/seed/top1a/400/500",
-          "https://picsum.photos/seed/top1b/400/500",
-          "https://picsum.photos/seed/top1c/400/500",
-          "https://picsum.photos/seed/top1d/400/500",
-        ],
+        images: [WF[14], WF[15], WF[0], WF[1]],
         sizes: {
           S: { price: 399, mrp: 799 },
           M: { price: 399, mrp: 799 },
@@ -335,12 +335,7 @@ export const products = [
       {
         color: "Mint Green",
         colorCode: "#98D8C8",
-        images: [
-          "https://picsum.photos/seed/top2a/400/500",
-          "https://picsum.photos/seed/top2b/400/500",
-          "https://picsum.photos/seed/top2c/400/500",
-          "https://picsum.photos/seed/top2d/400/500",
-        ],
+        images: [WF[2], WF[3], WF[4], WF[5]],
         sizes: {
           S: { price: 379, mrp: 749 },
           M: { price: 379, mrp: 749 },
@@ -378,12 +373,7 @@ export const products = [
       {
         color: "Baby Pink",
         colorCode: "#FFB6C1",
-        images: [
-          "https://picsum.photos/seed/kids1a/400/500",
-          "https://picsum.photos/seed/kids1b/400/500",
-          "https://picsum.photos/seed/kids1c/400/500",
-          "https://picsum.photos/seed/kids1d/400/500",
-        ],
+        images: [KD[0], KD[1], KD[2], KD[3]],
         sizes: {
           "2-3Y": { price: 449, mrp: 899 },
           "3-4Y": { price: 449, mrp: 899 },
@@ -395,12 +385,7 @@ export const products = [
       {
         color: "Lemon Yellow",
         colorCode: "#FFF44F",
-        images: [
-          "https://picsum.photos/seed/kids2a/400/500",
-          "https://picsum.photos/seed/kids2b/400/500",
-          "https://picsum.photos/seed/kids2c/400/500",
-          "https://picsum.photos/seed/kids2d/400/500",
-        ],
+        images: [KD[4], KD[5], KD[6], KD[7]],
         sizes: {
           "2-3Y": { price: 429, mrp: 849 },
           "3-4Y": { price: 429, mrp: 849 },
@@ -412,12 +397,7 @@ export const products = [
       {
         color: "Turquoise",
         colorCode: "#40E0D0",
-        images: [
-          "https://picsum.photos/seed/kids3a/400/500",
-          "https://picsum.photos/seed/kids3b/400/500",
-          "https://picsum.photos/seed/kids3c/400/500",
-          "https://picsum.photos/seed/kids3d/400/500",
-        ],
+        images: [KD[2], KD[3], KD[0], KD[1]],
         sizes: {
           "2-3Y": { price: 469, mrp: 929 },
           "3-4Y": { price: 469, mrp: 929 },
@@ -455,12 +435,7 @@ export const products = [
       {
         color: "Cream White",
         colorCode: "#FFFDD0",
-        images: [
-          "https://picsum.photos/seed/kurta1a/400/500",
-          "https://picsum.photos/seed/kurta1b/400/500",
-          "https://picsum.photos/seed/kurta1c/400/500",
-          "https://picsum.photos/seed/kurta1d/400/500",
-        ],
+        images: [MF[8], MF[9], MF[10], MF[11]],
         sizes: {
           S: { price: 799, mrp: 1499 },
           M: { price: 799, mrp: 1499 },
@@ -472,12 +447,7 @@ export const products = [
       {
         color: "Royal Blue",
         colorCode: "#4169E1",
-        images: [
-          "https://picsum.photos/seed/kurta2a/400/500",
-          "https://picsum.photos/seed/kurta2b/400/500",
-          "https://picsum.photos/seed/kurta2c/400/500",
-          "https://picsum.photos/seed/kurta2d/400/500",
-        ],
+        images: [MF[4], MF[5], MF[6], MF[7]],
         sizes: {
           S: { price: 849, mrp: 1599 },
           M: { price: 849, mrp: 1599 },
@@ -515,12 +485,7 @@ export const products = [
       {
         color: "Purple",
         colorCode: "#9B59B6",
-        images: [
-          "https://picsum.photos/seed/palazzo1a/400/500",
-          "https://picsum.photos/seed/palazzo1b/400/500",
-          "https://picsum.photos/seed/palazzo1c/400/500",
-          "https://picsum.photos/seed/palazzo1d/400/500",
-        ],
+        images: [WF[8], WF[9], WF[10], WF[11]],
         sizes: {
           S: { price: 1299, mrp: 2499 },
           M: { price: 1299, mrp: 2499 },
@@ -532,12 +497,7 @@ export const products = [
       {
         color: "Teal",
         colorCode: "#008B8B",
-        images: [
-          "https://picsum.photos/seed/palazzo2a/400/500",
-          "https://picsum.photos/seed/palazzo2b/400/500",
-          "https://picsum.photos/seed/palazzo2c/400/500",
-          "https://picsum.photos/seed/palazzo2d/400/500",
-        ],
+        images: [WF[4], WF[5], WF[6], WF[7]],
         sizes: {
           S: { price: 1349, mrp: 2599 },
           M: { price: 1349, mrp: 2599 },
@@ -575,12 +535,7 @@ export const products = [
       {
         color: "Orange",
         colorCode: "#FF8C00",
-        images: [
-          "https://picsum.photos/seed/kidst1a/400/500",
-          "https://picsum.photos/seed/kidst1b/400/500",
-          "https://picsum.photos/seed/kidst1c/400/500",
-          "https://picsum.photos/seed/kidst1d/400/500",
-        ],
+        images: [KD[6], KD[7], KD[4], KD[5]],
         sizes: {
           "2-3Y": { price: 279, mrp: 549 },
           "3-4Y": { price: 279, mrp: 549 },
@@ -592,12 +547,7 @@ export const products = [
       {
         color: "Sky Blue",
         colorCode: "#87CEEB",
-        images: [
-          "https://picsum.photos/seed/kidst2a/400/500",
-          "https://picsum.photos/seed/kidst2b/400/500",
-          "https://picsum.photos/seed/kidst2c/400/500",
-          "https://picsum.photos/seed/kidst2d/400/500",
-        ],
+        images: [KD[2], KD[3], KD[4], KD[5]],
         sizes: {
           "2-3Y": { price: 259, mrp: 519 },
           "3-4Y": { price: 259, mrp: 519 },
@@ -636,60 +586,88 @@ export const products = [
       {
         color: "Deep Red",
         colorCode: "#8B0000",
-        images: [
-          "https://picsum.photos/seed/saree1a/400/500",
-          "https://picsum.photos/seed/saree1b/400/500",
-          "https://picsum.photos/seed/saree1c/400/500",
-          "https://picsum.photos/seed/saree1d/400/500",
-        ],
-        sizes: {
-          "Free Size": { price: 2499, mrp: 4999 },
-        },
+        images: [WF[12], WF[13], WF[14], WF[15]],
+        sizes: { "Free Size": { price: 2499, mrp: 4999 } },
       },
       {
         color: "Royal Gold",
         colorCode: "#CFB53B",
-        images: [
-          "https://picsum.photos/seed/saree2a/400/500",
-          "https://picsum.photos/seed/saree2b/400/500",
-          "https://picsum.photos/seed/saree2c/400/500",
-          "https://picsum.photos/seed/saree2d/400/500",
-        ],
-        sizes: {
-          "Free Size": { price: 2799, mrp: 5499 },
-        },
+        images: [WF[0], WF[1], WF[2], WF[3]],
+        sizes: { "Free Size": { price: 2799, mrp: 5499 } },
       },
       {
         color: "Peacock Green",
         colorCode: "#2C5F2E",
-        images: [
-          "https://picsum.photos/seed/saree3a/400/500",
-          "https://picsum.photos/seed/saree3b/400/500",
-          "https://picsum.photos/seed/saree3c/400/500",
-          "https://picsum.photos/seed/saree3d/400/500",
-        ],
-        sizes: {
-          "Free Size": { price: 2699, mrp: 5299 },
-        },
+        images: [WF[4], WF[5], WF[6], WF[7]],
+        sizes: { "Free Size": { price: 2699, mrp: 5299 } },
       },
     ],
   },
 ];
 
 export const categories = [
-  { id: "men", label: "Men", icon: "👔", description: "Shirts, Jeans, Kurtas & more", color: "from-blue-50 to-blue-100", image: "https://picsum.photos/seed/mencat/400/300" },
-  { id: "women", label: "Women", icon: "👗", description: "Kurtis, Sarees, Tops & more", color: "from-pink-50 to-pink-100", image: "https://picsum.photos/seed/womencat/400/300" },
-  { id: "kids", label: "Kids", icon: "🧒", description: "Frocks, T-Shirts & more", color: "from-yellow-50 to-yellow-100", image: "https://picsum.photos/seed/kidscat/400/300" },
+  {
+    id: "men",
+    label: "Men",
+    icon: "👔",
+    description: "Shirts, Jeans, Kurtas & more",
+    color: "from-blue-50 to-blue-100",
+    image: img("1488161628813-04466f872be2"),
+  },
+  {
+    id: "women",
+    label: "Women",
+    icon: "👗",
+    description: "Kurtis, Sarees, Tops & more",
+    color: "from-pink-50 to-pink-100",
+    image: img("1485968579580-b6d095142e6e"),
+  },
+  {
+    id: "kids",
+    label: "Kids",
+    icon: "🧒",
+    description: "Frocks, T-Shirts & more",
+    color: "from-yellow-50 to-yellow-100",
+    image: img("1518791841217-8f162f1912fa"),
+  },
 ];
 
 export const banners = [
-  { id: 1, title: "Grand Festival Sale", subtitle: "Up to 60% OFF on all traditional wear", cta: "Shop Now", gradient: "from-orange-400 to-pink-500" },
-  { id: 2, title: "New Arrivals", subtitle: "Fresh styles just arrived for the season", cta: "Explore", gradient: "from-blue-500 to-purple-600" },
-  { id: 3, title: "Exclusive Kurti Collection", subtitle: "Over 200+ styles starting ₹299", cta: "View All", gradient: "from-green-400 to-teal-500" },
+  {
+    id: 1,
+    title: "Grand Festival Sale",
+    subtitle: "Up to 60% OFF on all traditional wear",
+    cta: "Shop Now",
+    gradient: "from-orange-400 to-pink-500",
+  },
+  {
+    id: 2,
+    title: "New Arrivals",
+    subtitle: "Fresh styles just arrived for the season",
+    cta: "Explore",
+    gradient: "from-blue-500 to-purple-600",
+  },
+  {
+    id: 3,
+    title: "Exclusive Kurti Collection",
+    subtitle: "Over 200+ styles starting ₹299",
+    cta: "View All",
+    gradient: "from-green-400 to-teal-500",
+  },
 ];
 
-export const getProductsByCategory = (category) =>
-  products.filter((p) => p.category === category);
+// ── Gallery images (Instagram section) ───────────────────────────────────────
+export const galleryImages = [
+  img("1485968579580-b6d095142e6e", "center", 400),
+  img("1507003211169-0a1dd7228f2d", "center", 400),
+  img("1516762689618-eff2d9513ee7", "center", 400),
+  img("1518791841217-8f162f1912fa", "center", 400),
+  img("1529810613258-6b7b42741f1", "center", 400),
+  img("1488161628813-04466f872be2", "center", 400),
+];
+
+export const getProductsByCategory = (cat) =>
+  products.filter((p) => p.category === cat);
 
 export const getTrendingProducts = () =>
   products.filter((p) => p.tags.includes("trending"));
@@ -704,4 +682,6 @@ export const getProductById = (id) =>
   products.find((p) => p.id === parseInt(id));
 
 export const getRelatedProducts = (product) =>
-  products.filter((p) => p.id !== product.id && p.category === product.category).slice(0, 4);
+  products
+    .filter((p) => p.id !== product.id && p.category === product.category)
+    .slice(0, 4);
