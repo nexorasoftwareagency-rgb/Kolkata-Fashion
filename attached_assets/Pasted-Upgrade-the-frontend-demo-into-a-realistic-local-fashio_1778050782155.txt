@@ -1,0 +1,135 @@
+Upgrade the frontend demo into a realistic local fashion ecommerce customer website.
+
+IMPORTANT:
+Frontend demo only.
+No backend or authentication required.
+
+NEW FEATURES TO ADD:
+
+1. ADD TO CART SYSTEM
+
+Requirements:
+Users should be able to add products to cart.
+
+Cart icon in navbar must show item count.
+
+Cart page should display:
+Product image,
+product name,
+selected color,
+selected size,
+quantity,
+individual price,
+subtotal,
+total amount.
+
+Cart should update instantly using local React state.
+
+2. WHATSAPP ORDER SYSTEM
+
+Add a prominent:
+"Order on WhatsApp" button inside cart page.
+
+WhatsApp number:
+9724649971
+
+When customer clicks:
+Generate a properly formatted WhatsApp order message containing:
+
+Customer name,
+selected products,
+colors,
+sizes,
+quantity,
+individual prices,
+total amount.
+
+The message should feel like a clean ecommerce invoice.
+
+Example structure:
+
+Kolkata Fashion Parsa Order
+
+Customer:
+John Doe
+
+Products:
+
+1. Women Kurti
+   Color: Red
+   Size: M
+   Qty: 2
+   Price: ₹799
+
+Total:
+₹1598
+
+Send the message automatically into WhatsApp using wa.me link.
+
+3. CUSTOMER PROFILE UI
+
+Add a customer profile section.
+
+Features:
+Profile icon in navbar,
+profile page UI,
+customer name,
+mobile number,
+saved addresses,
+order history mockup,
+wishlist section mockup.
+
+Frontend UI only.
+Use mock data.
+
+4. ADMIN LOGIN OPTION
+
+Add:
+"Admin Login" option in navbar menu.
+
+No authentication required.
+
+Clicking should open:
+Admin dashboard mockup page.
+
+5. MOBILE UX
+
+IMPORTANT:
+The entire ecommerce experience must feel smooth on mobile devices similar to:
+Flipkart,
+Meesho,
+AJIO.
+
+Requirements:
+Sticky bottom navigation,
+mobile cart access,
+smooth scrolling,
+touch friendly buttons.
+
+6. PERFORMANCE RULES
+
+Do NOT use backend.
+Do NOT use Firebase.
+Do NOT install heavy dependencies.
+Use lightweight React state only.
+
+Keep rendering optimized for Replit free tier.
+
+7. UI STYLE
+
+Maintain existing design language.
+
+Style inspiration:
+Meesho,
+Flipkart Fashion,
+AJIO.
+
+Keep:
+modern ecommerce feel,
+clean spacing,
+rounded product cards,
+lightweight rendering,
+premium mobile UX.
+
+Do NOT redesign the whole website.
+Only upgrade functionality and ecommerce realism.
