@@ -1,45 +1,56 @@
-# [Project name]
+# Kolkata Fashion Parsa
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A complete mobile-first fashion ecommerce frontend demo for a local garments shop in Parsa, Bihar, India — inspired by Meesho, Flipkart, and Myntra.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- `pnpm --filter @workspace/kolkata-fashion run dev` — start the frontend (port auto-assigned)
+- No backend, database, or API required — pure frontend with local mock data
 
 ## Stack
 
-- pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- React + Vite (JavaScript, no TypeScript in pages/components)
+- Tailwind CSS v4
+- Wouter (routing)
+- Lucide React (icons)
+- Poppins font via Google Fonts
+- pnpm workspaces, Node.js 24
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/kolkata-fashion/src/data/products.js` — all mock product data (10 products, multi-variant)
+- `artifacts/kolkata-fashion/src/pages/` — Home, Category, ProductDetail, Admin
+- `artifacts/kolkata-fashion/src/components/` — Navbar, BottomNav, ProductCard, Footer
+- `artifacts/kolkata-fashion/src/App.tsx` — router + layout shell
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Frontend-only: no backend, no auth, no database — all data comes from `products.js`
+- Product variants: each product has color variants → each color has its own image set + size-specific pricing; switching color updates images + prices instantly via React state
+- Routing: Wouter with base path from `import.meta.env.BASE_URL`
+- Mobile-first: bottom navigation bar on mobile (`<sm`), sticky top nav on desktop
+- Admin dashboard is a UI mockup only — no real data mutations
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- **Homepage**: Auto-rotating hero banner, category cards (Men/Women/Kids), trending/new arrivals/festival product rows, dual festival banners, Instagram-style gallery, WhatsApp CTA, Google Maps embed, footer
+- **Category Page**: Filter sidebar (category, price range, rating), sort dropdown, responsive product grid, mobile bottom-sheet filter drawer
+- **Product Detail**: Multi-image gallery with thumbnails, color variant switching (updates images + price instantly), size selector with per-size pricing, ratings breakdown, offers section, delivery info, WhatsApp enquiry, related products
+- **Admin Dashboard**: Stats cards, product table, product upload form UI, order management table, banner management, bar chart analytics — all mock UI
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- React + Tailwind only, no TypeScript in UI files
+- No backend, no auth, no DB, no heavy dependencies
+- Mobile-first; keep it lightweight and fast
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Product images use picsum.photos (placeholder) — replace with real fashion photos for production
+- Admin tab is UI mockup only; "Save" and action buttons do nothing
+- WhatsApp links use a demo phone number — update before going live
 
 ## Pointers
 
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+- See `src/data/products.js` for the full product/variant data structure
+- All pages are `.jsx` files; `App.tsx` is the only TypeScript file (routing shell)

@@ -1,0 +1,195 @@
+Build a complete modern mobile first fashion ecommerce frontend demo for a local retail garments shop named Kolkata Fashion Parsa located in Parsa Bihar India.
+
+The design language should combine:
+Meesho’s Bharat friendly shopping simplicity,
+Flipkart’s structured ecommerce UX,
+and Myntra style fashion presentation.
+
+The website should feel:
+clean,
+fast,
+smooth,
+trustworthy,
+fashion focused,
+premium but affordable.
+
+IMPORTANT:
+This is ONLY a frontend ecommerce demo.
+Do not build backend, authentication, payment gateway, real cart system, or APIs.
+
+TECH STACK:
+Use React with modern component structure.
+Use Tailwind CSS for styling.
+Use responsive mobile first design.
+Use reusable components.
+Use clean ecommerce architecture.
+
+OVERALL DESIGN STYLE:
+Minimal ecommerce UI.
+Large spacing.
+Rounded cards.
+Soft shadows.
+Smooth hover transitions.
+Fast loading feel.
+Professional fashion aesthetics.
+Indian ecommerce style UX.
+Modern typography.
+
+COLOR PALETTE:
+Primary:
+White
+
+Secondary:
+Black
+
+Accent:
+Flipkart blue and Meesho pink inspired subtle accents.
+
+Do NOT overuse bright colors.
+Keep the design elegant and lightweight.
+
+TYPOGRAPHY:
+Use Poppins font.
+Modern ecommerce typography hierarchy.
+Readable mobile typography.
+
+WEBSITE PAGES REQUIRED:
+
+1. HOMEPAGE
+
+Sections:
+Sticky navbar,
+Search bar,
+Hero fashion banner,
+Mens category,
+Women category,
+Kids category,
+Trending products,
+New arrivals,
+Festival collections,
+Offer banners,
+Instagram style fashion gallery,
+Why choose us section,
+WhatsApp enquiry section,
+Google Maps shop location section,
+Footer.
+
+Navbar should include:
+Logo,
+Categories,
+Search,
+Wishlist icon,
+Cart icon,
+Profile icon.
+
+Homepage should feel inspired by:
+Meesho,
+Flipkart,
+AJIO,
+Myntra.
+
+2. CATEGORY PAGE
+
+Create a responsive product grid.
+
+Features:
+Filter sidebar UI,
+Sort dropdown,
+Product cards,
+Discount labels,
+Ratings UI,
+Quick view hover feel,
+Responsive spacing.
+
+No backend filtering required.
+Only frontend UI.
+
+3. PRODUCT DETAIL PAGE. MOST IMPORTANT PAGE.
+
+Build a premium ecommerce product page inspired by Flipkart fashion product pages.
+
+Features required:
+Large main image gallery,
+Thumbnail image slider,
+Color variant selector,
+On color change:
+Images must switch instantly,
+Price must update,
+Available sizes must update.
+
+Support:
+4 to 5 images per color variant.
+
+Add:
+Size selector,
+Dynamic pricing,
+Product description,
+Offers section,
+Delivery info UI,
+Ratings section,
+Related products carousel,
+WhatsApp enquiry button.
+
+VERY IMPORTANT:
+Color switching must feel instant and smooth without page reload.
+
+Implement frontend local state based variant switching similar to Flipkart.
+
+4. ADMIN DASHBOARD MOCKUP
+
+Frontend UI only.
+
+Sections:
+Dashboard overview cards,
+Product upload UI,
+Banner management UI,
+Product list table,
+Order management UI mockup,
+Analytics cards.
+
+No backend functionality needed.
+
+PRODUCT DATA STRUCTURE REQUIREMENT:
+
+Use realistic fashion ecommerce structure supporting:
+Multiple colors,
+Multiple images per color,
+Multiple sizes,
+Different prices per size/color.
+
+Use local mock JSON data.
+
+PERFORMANCE REQUIREMENTS:
+
+Use lazy loading for images.
+Use optimized image rendering.
+Avoid unnecessary rerenders.
+Use smooth transitions.
+Website should feel lightweight and mobile optimized.
+
+MOBILE UX REQUIREMENTS:
+
+This project is mobile first.
+The mobile experience should feel close to Meesho and Flipkart mobile ecommerce apps.
+
+Use:
+Bottom navigation on mobile,
+Touch friendly buttons,
+Responsive product cards,
+Smooth scrolling.
+
+DEMO PRODUCTS:
+
+Generate realistic local fashion products including:
+Kurti,
+Jeans,
+Shirts,
+Leggings,
+Tops,
+Kids wear.
+
+Use Indian ecommerce style naming and pricing.
+
+FINAL GOAL:
+
+The website should look like a real modern Indian fashion ecommerce platform demo suitable for presenting to a garments shop client before full development.
